@@ -3904,7 +3904,8 @@ FusionPoseSensor.prototype.start = function () {
   if (this.isWithoutDeviceMotion) {
     window.addEventListener('deviceorientation', this.onDeviceOrientationCallback_);
   } else {
-    window.addEventListener('devicemotion', this.onDeviceMotionCallback_);
+    window.addEventListener('deviceorientation', this.onDeviceOrientationCallback_);
+    //window.addEventListener('devicemotion', this.onDeviceMotionCallback_);
   }
 };
 FusionPoseSensor.prototype.stop = function () {
