@@ -38,7 +38,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         <p>
           This sample demonstrates using a 'local-floor' reference space to provide
           room scale tracking.
-          <a class="back" href="./">Back</a>
+          <a class="back" href="./">Back</a> <a onclick="reqPermission();">req</a>
+
         </p>
       </summary>
     </header>
@@ -211,6 +212,24 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         scene.drawXRFrame(frame, pose);
 
         scene.endFrame();
+      }
+
+
+      function reqPermission () {
+        if (
+          DeviceMotionEvent &&
+          DeviceMotionEvent.requestPermission &&
+          typeof DeviceMotionEvent.requestPermission === 'function'
+        ) {
+          DeviceMotionEvent.requestPermission();
+        }
+        if (
+          DeviceOrientationEvent &&
+          DeviceOrientationEvent.requestPermission &&
+          typeof DeviceOrientationEvent.requestPermission === 'function'
+        ) {
+          DeviceOrientationEvent.requestPermission();
+        }
       }
 
       // Start the XR application.
