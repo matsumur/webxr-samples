@@ -38,11 +38,29 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         <p>
           This sample demonstrates using a 'local-floor' reference space to provide
           room scale tracking.
-          <a class="back" href="./">Back</a> <a href="#" onclick="reqPermission();">req</a>
+          <a class="back" href="./">Back</a> <button onclick="reqPermission()">req</button>
 
         </p>
       </summary>
     </header>
+    <script>
+      function reqPermission () {
+        if (
+          DeviceMotionEvent &&
+          DeviceMotionEvent.requestPermission &&
+          typeof DeviceMotionEvent.requestPermission === 'function'
+        ) {
+          DeviceMotionEvent.requestPermission();
+        }
+        if (
+          DeviceOrientationEvent &&
+          DeviceOrientationEvent.requestPermission &&
+          typeof DeviceOrientationEvent.requestPermission === 'function'
+        ) {
+          DeviceOrientationEvent.requestPermission();
+        }
+      }
+    </script>
     <script type="module">
       import {WebXRButton} from './js/util/webxr-button.js';
       import {Scene} from './js/render/scenes/scene.js';
@@ -213,25 +231,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
         scene.endFrame();
       }
-
-
-      function reqPermission () {
-        if (
-          DeviceMotionEvent &&
-          DeviceMotionEvent.requestPermission &&
-          typeof DeviceMotionEvent.requestPermission === 'function'
-        ) {
-          DeviceMotionEvent.requestPermission();
-        }
-        if (
-          DeviceOrientationEvent &&
-          DeviceOrientationEvent.requestPermission &&
-          typeof DeviceOrientationEvent.requestPermission === 'function'
-        ) {
-          DeviceOrientationEvent.requestPermission();
-        }
-      }
-
       // Start the XR application.
       initXR();
     </script>
